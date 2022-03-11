@@ -3,22 +3,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Infrastructure
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
         private readonly DbContext _context;
 
-        public RepositoryBase(DbContext context)
+        protected Repository(DbContext context)
         {
             _context = context;
         }
 
-        public IQueryable<T> FindAll(bool trackChanges) =>
+        public virtual IQueryable<T> FindAll(bool trackChanges) =>
             !trackChanges ?
               _context.Set<T>()
                 .AsNoTracking() :
               _context.Set<T>();
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression,
+        public virtual IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression,
         bool trackChanges) =>
             !trackChanges ?
               _context.Set<T>()
@@ -30,10 +30,10 @@ namespace WebApplication1.Infrastructure
         public virtual Task<T> GetByIdAsync<TId>(TId id) =>
             _context.Set<T>().FindAsync(id).AsTask();
 
-        public void Create(T entity) => _context.Set<T>().Add(entity);
+        public virtual void Create(T entity) => _context.Set<T>().Add(entity);
 
-        public void Update(T entity) => _context.Set<T>().Update(entity);
+        public virtual void Update(T entity) => _context.Set<T>().Update(entity);
 
-        public void Delete(T entity) => _context.Set<T>().Remove(entity);
+        public virtual void Delete(T entity) => _context.Set<T>().Remove(entity);
     }
 }

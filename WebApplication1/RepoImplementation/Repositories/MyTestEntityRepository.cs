@@ -3,16 +3,20 @@ using WebApplication1.Models;
 
 namespace WebApplication1.RepoImplementation.Repositories
 {
-    public class MyTestEntityRepository : RepositoryBase<MyTestEntity>, IMyTestEntityRepository
+    public class MyTestEntityRepository : Repository<MyTestEntity>
     {
-        public MyTestEntityRepository(MyDbContext repositoryContext)
+        private readonly ILogger _logger;
+
+        public MyTestEntityRepository(MyDbContext repositoryContext, ILogger logger)
             : base(repositoryContext)
         {
+            _logger = logger;
         }
 
-        public IEnumerable<MyTestEntity> GetAllMyTestEntities(bool trackChanges) =>
-           FindAll(trackChanges)
-           .OrderBy(c => c.Name)
-           .ToList();
+        public override IQueryable<MyTestEntity> FindAll(bool trackChanges)
+        {
+            _logger.LogInformation("ciaone");
+            return base.FindAll(trackChanges);
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Infrastructure
 {
-    public interface IRepositoryBase<T>
+    public interface IRepository<T>: IRepository
     {
         IQueryable<T> FindAll(bool trackChanges);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression,
@@ -12,5 +12,10 @@ namespace WebApplication1.Infrastructure
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
+    }
+
+    public interface IRepository
+    {
+
     }
 }
