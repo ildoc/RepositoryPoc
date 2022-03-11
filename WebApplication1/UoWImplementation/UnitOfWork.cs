@@ -1,7 +1,7 @@
 ﻿using WebApplication1.Infrastructure;
-using WebApplication1.RepoImplementation.Repositories;
+using WebApplication1.UoWImplementation.Repositories;
 
-namespace WebApplication1.RepoImplementation
+namespace WebApplication1.UoWImplementation
 {
     public class UnitOfWork : UnitOfWorkBase<MyDbContext>, IUnitOfWork
     {

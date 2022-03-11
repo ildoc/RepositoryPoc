@@ -1,6 +1,6 @@
 ﻿using WebApplication1.Models;
 
-namespace WebApplication1.RepoImplementation.Repositories
+namespace WebApplication1.UoWImplementation.Repositories
 {
     public interface IMyTestEntityRepository
     {
