@@ -1,8 +1,7 @@
 ﻿using WebApplication1;
 using WebApplication1.Infrastructure;
 using WebApplication1.Models;
-using WebApplication1.RepoImplementation;
-using WebApplication1.RepoImplementation.Repositories;
+using WebApplication1.UoWImplementation.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MyDbContext>();
+
+// questo per tutti
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<MyDbContext>>();
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
+// questo solo per le entity di cui si intende fare override
 builder.Services.AddTransient<IRepository<MyTestEntity>, MyTestEntityRepository>();
 
 var app = builder.Build();

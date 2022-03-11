@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Infrastructure;
 using WebApplication1.Models;
-using WebApplication1.RepoImplementation;
 
 namespace WebApplication1.Controllers
 {
