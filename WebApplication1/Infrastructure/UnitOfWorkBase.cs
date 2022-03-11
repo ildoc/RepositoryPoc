@@ -2,11 +2,11 @@
 
 namespace WebApplication1.Infrastructure
 {
-    public class RepositoryManagerBase<TDbContext> : IRepositoryManagerBase where TDbContext : DbContext
+    public abstract class UnitOfWorkBase<TDbContext> : IUnitOfWorkBase where TDbContext : DbContext
     {
         protected readonly TDbContext _context;
 
-        public RepositoryManagerBase(TDbContext context)
+        protected UnitOfWorkBase(TDbContext context)
         {
             _context = context;
         }

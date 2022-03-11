@@ -8,17 +8,17 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class MyTestEntityController : ControllerBase
     {
-        public IRepositoryManager _repository { get; }
-        public MyTestEntityController(IRepositoryManager repository)
+        public IUnitOfWork _uof { get; }
+        public MyTestEntityController(IUnitOfWork uof)
         {
-            _repository = repository;
+            _uof = uof;
         }
 
 
         [HttpGet]
         public ActionResult<IEnumerable<MyTestEntity>> Get()
         {
-            return Ok(_repository.MyTestEntity.GetAllMyTestEntities(false));
+            return Ok(_uof.MyTestEntity.GetAllMyTestEntities(false));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WebApplication1.Infrastructure
 {
-    public interface IRepositoryManagerBase
+    public interface IUnitOfWorkBase
     {
         void Save();
     }

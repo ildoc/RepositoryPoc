@@ -3,11 +3,11 @@ using WebApplication1.RepoImplementation.Repositories;
 
 namespace WebApplication1.RepoImplementation
 {
-    public class RepositoryManager : RepositoryManagerBase<MyDbContext>, IRepositoryManager
+    public class UnitOfWork : UnitOfWorkBase<MyDbContext>, IUnitOfWork
     {
         private IMyTestEntityRepository _myTestEntityRepository;
 
-        public RepositoryManager(MyDbContext context) : base(context)
+        public UnitOfWork(MyDbContext context) : base(context)
         {
         }
 
