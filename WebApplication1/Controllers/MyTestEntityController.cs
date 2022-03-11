@@ -9,7 +9,6 @@ namespace WebApplication1.Controllers
     public class MyTestEntityController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
-
         public MyTestEntityController(IUnitOfWork uow)
         {
             _uow = uow;
