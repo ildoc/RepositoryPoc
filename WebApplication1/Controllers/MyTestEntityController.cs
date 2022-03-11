@@ -8,17 +8,17 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class MyTestEntityController : ControllerBase
     {
-        private readonly IUnitOfWork _uof;
+        private readonly IUnitOfWork _uow;
 
-        public MyTestEntityController(IUnitOfWork uof)
+        public MyTestEntityController(IUnitOfWork uow)
         {
-            _uof = uof;
+            _uow = uow;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<MyTestEntity>> Get()
         {
-            return Ok(_uof.Get<MyTestEntity>().FindAll(false));
+            return Ok(_uow.Get<MyTestEntity>().FindAll(false));
         }
     }
 }
