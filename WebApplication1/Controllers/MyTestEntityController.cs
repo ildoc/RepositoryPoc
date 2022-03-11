@@ -9,18 +9,17 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class MyTestEntityController : ControllerBase
     {
-        private readonly IRepositoryManager _repository;
+        private readonly IUnitOfWork _uof;
 
-        public MyTestEntityController(IRepositoryManager repository)
+        public MyTestEntityController(IUnitOfWork uof)
         {
-            _repository = repository;
+            _uof = uof;
         }
-
 
         [HttpGet]
         public ActionResult<IEnumerable<MyTestEntity>> Get()
         {
-            return Ok(_repository.Get<MyTestEntity>().FindAll(false));
+            return Ok(_uof.Get<MyTestEntity>().FindAll(false));
         }
     }
 }

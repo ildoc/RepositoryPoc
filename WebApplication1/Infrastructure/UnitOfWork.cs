@@ -2,13 +2,13 @@
 
 namespace WebApplication1.Infrastructure
 {
-    public class RepositoryManager<TDbContext> : IDisposable,IRepositoryManager where TDbContext : DbContext
+    public class UnitOfWork<TDbContext> : IDisposable,IUnitOfWork where TDbContext : DbContext
     {
         protected readonly TDbContext _context;
         private readonly IServiceScope _scope;
         private readonly Dictionary<Type, IRepository> _repositories = new();
 
-        public RepositoryManager(TDbContext context, IServiceScopeFactory scopeFactory)
+        public UnitOfWork(TDbContext context, IServiceScopeFactory scopeFactory)
         {
             _context = context;
             _scope = scopeFactory.CreateScope();

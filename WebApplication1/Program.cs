@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MyDbContext>();
-builder.Services.AddScoped<IRepositoryManager, RepositoryManager<MyDbContext>>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork<MyDbContext>>();
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddTransient<IRepository<MyTestEntity>, MyTestEntityRepository>();
