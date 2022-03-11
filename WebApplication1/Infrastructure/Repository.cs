@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Infrastructure
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly DbContext _context;
 
-        protected Repository(DbContext context)
+        public Repository(DbContext context)
         {
             _context = context;
         }

@@ -5,9 +5,9 @@ namespace WebApplication1.UoWImplementation.Repositories
 {
     public class MyTestEntityRepository : Repository<MyTestEntity>
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<MyTestEntityRepository> _logger;
 
-        public MyTestEntityRepository(MyDbContext repositoryContext, ILogger logger)
+        public MyTestEntityRepository(MyDbContext repositoryContext, ILogger<MyTestEntityRepository> logger)
             : base(repositoryContext)
         {
             _logger = logger;

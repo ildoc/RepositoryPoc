@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MyDbContext>();
+builder.Services.AddLogging();
 
 // questo per tutti
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<MyDbContext>>();
